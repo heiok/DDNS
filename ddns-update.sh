@@ -24,7 +24,7 @@ checkip
 if [ "$IP" != "" ];then
     #update log file
     echo `date '+%Y/%m/%d %H:%M:%S'`"-$IP" >> $log
-    #update dnspod
-
+    #changeip or dnspod ddns update scripts
+    
 fi
 
