@@ -1,14 +1,9 @@
 #!/bin/sh
-( echo "From:<saminside1@163.com>”;
-echo "To:<dgcatv@yeah.net>”;
+{echo "From:<saminside1@163.com>";
+echo "To:<dgcatv@yeah.net>";
+echo "Date: `date '+%a, %d %b %Y %H:%M:%S %z'`";
+echo "Subject: OpenWRT Router New IP!";
 echo "";
-echo "Subject: OpenWRT Router New IP!”
-echo "$1"
-echo ""
-#read LINE
-#while [ -n $LINE ]
-#do
-# echo $LINE
-#read LINE
-#done
-)|ssmtp -v -f “Heiok.com” -F "www.heiok.com" dgcatv@yeah.net
+#Get current pppoe-wan interface IP
+echo "The new IP is $(ip -4 addr show dev pppoe-wan | awk '/inet / {print $2}' | cut -d/ -f1).";
+}|ssmtp dgcatv@yeah.net
